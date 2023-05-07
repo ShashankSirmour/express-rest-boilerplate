@@ -1,0 +1,228 @@
+{
+	"info": {
+		"_postman_id": "a26a2f20-f21c-45c5-9a5a-1e922681d482",
+		"name": "Authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Forgot Password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZmJlOTM4YWJhYjk4M2IxMDQ2YzcyMyIsImlhdCI6MTU5MzU2NzU0NCwiZXhwIjoxNjAxMzQzNTQ0fQ.4-zfhzNTmC3K8A4Ou4ea4lW1omL5aqznjyY6CCEWcAc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"a@g.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/v1/users/forgotPassword",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"v1",
+						"users",
+						"forgotPassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SignUp",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7b2e6a0f-e6fa-4a3c-83ea-0c8cd11bd99d",
+						"exec": [
+							"\r",
+							"pm.environment.set(\"jwt\", pm.response.json().token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"shashank\",\r\n    \"email\": \"a@g.com\",\r\n    \"password\": \"12345678\",\r\n    \"passwordConfirm\": \"12345678\",\r\n    \"class\": \"12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/v1/users/signup",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"v1",
+						"users",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LogIn",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4b3b56bf-e272-4dd9-95d0-7ce855ad95af",
+						"exec": [
+							"pm.environment.set(\"jwt\", pm.response.json().token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZmJlOTM4YWJhYjk4M2IxMDQ2YzcyMyIsImlhdCI6MTU5MzU2NzU0NCwiZXhwIjoxNjAxMzQzNTQ0fQ.4-zfhzNTmC3K8A4Ou4ea4lW1omL5aqznjyY6CCEWcAc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"a@g.com\",\r\n    \"password\": \"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/v1/users/login",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"v1",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "812154d9-55a6-42be-a216-ef98525e064e",
+						"exec": [
+							"pm.environment.set(\"jwt\", pm.response.json().token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZmJlOTM4YWJhYjk4M2IxMDQ2YzcyMyIsImlhdCI6MTU5MzU2NzU0NCwiZXhwIjoxNjAxMzQzNTQ0fQ.4-zfhzNTmC3K8A4Ou4ea4lW1omL5aqznjyY6CCEWcAc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"hello123\",\r\n    \"passwordConfirm\": \"hello123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/v1/users/resetPassword/54bb5ac1b80c0b6a515efdc62c9625d57b4dbbc5520622f8634424cbd9354f1e",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"v1",
+						"users",
+						"resetPassword",
+						"54bb5ac1b80c0b6a515efdc62c9625d57b4dbbc5520622f8634424cbd9354f1e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Current User Password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "57c18d62-6d12-420c-a35f-6acb7e613b46",
+						"exec": [
+							"pm.environment.set(\"jwt\", pm.response.json().token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"passwordCurrent\": \"12345678\",\r\n    \"password\":\"12345678\",\r\n    \"passwordConfirm\":\"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/v1/users/updateMyPassword",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"v1",
+						"users",
+						"updateMyPassword"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
